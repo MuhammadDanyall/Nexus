@@ -14,7 +14,11 @@ const swaggerOptions = {
     servers: [
       {
         url: 'http://localhost:5000',
-        description: 'Development server'
+        description: 'Local development server'
+      },
+      {
+        url: 'https://nexus-6koz.onrender.com',
+        description: 'Production server on Render'
       }
     ],
     components: {
