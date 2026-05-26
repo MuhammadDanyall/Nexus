@@ -1,16 +1,13 @@
 services:
-  - type: web
-    name: nexus-backend
-    env: node
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 5000
-      - key: MONGO_URI
-        sync: false # User must provide this in the Render dashboard
-      - key: JWT_SECRET
-        sync: false # User must provide this in the Render dashboard
+  # Frontend Static Site
+  - type: static
+    name: nexus-frontend
+    repo: https://github.com/MuhammadDanyall/Nexus
+    branch: main
+    rootDir: Nexus
+    buildCommand: npm run build
+    publishDir: dist
+    routes:
+      - source: /*
+        destination: /index.html
+        type: rewrite
